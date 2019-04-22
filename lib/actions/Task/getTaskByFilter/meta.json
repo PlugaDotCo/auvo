@@ -1,0 +1,277 @@
+{
+  "name": {
+    "pt_BR": "Consulta tarefa - filtro",
+    "en": "Search task - filter"
+  },
+  "action_key": "searchTaskByFilter",
+  "description": {
+    "pt_BR": "Consulta tarefa - filter",
+    "en": "Search task - filter"
+  },
+  "action_fields": {
+    "fields": [
+      {
+        "key": "page",
+        "name": {
+          "pt_BR": "Página",
+          "en": "Page"
+        },
+        "description": {
+          "pt_BR": "Página de retorno para busca paginada",
+          "en": "Return page for paged search"
+        },
+        "required": true,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "integer",
+        "default": 1
+      },
+      {
+        "key": "pageSize",
+        "name": {
+          "pt_BR": "Registros por página",
+          "en": "Page size"
+        },
+        "description": {
+          "pt_BR": "Quantidade de registros da pagina",
+          "en": "Number of page records"
+        },
+        "required": true,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "integer",
+        "default": 10
+      },
+      {
+        "key": "order",
+        "name": { "pt_BR": "Ordem de retorno da consulta", "en": "Query return order" },
+        "description": { "pt_BR": "Ordem de retorno da consulta", "en": "Query return order" },
+        "label": { "pt_BR": "Ordenar por:", "en": "Order by:" },
+        "placeholder": { "pt_BR": "Selecione a ordem de consulta", "en": "Select query order" },
+        "required": true,
+        "visible": true,
+        "advanced": true,
+        "field_type": "dropdown",
+        "data_type": "string",
+        "default": "0",
+        "list": {
+          "type": "local",
+          "data": [
+            {"label": "Ascending", "value": "0" },
+            {"label": "Descending", "value": "1" }
+          ]
+        }
+      },
+      {
+        "key": "selectfields",
+        "name": {
+          "pt_BR": "Campos a serem retornados",
+          "en": "Fields to return"
+        },
+        "description": {
+          "pt_BR": "Campos devem ser escritos separados por vírgula. String vazia retorna todos os campos da entidade.",
+          "en": "Fields must be separated by a comma. Empty String returns all fields of the entity."
+        },
+        "required": false,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "string"
+      },
+      {
+        "key": "startDate",
+        "name": {
+          "pt_BR": "Data de início do filtro de tarefa",
+          "en": "Task filter initial date"
+        },
+        "description": {
+          "pt_BR": "Data de início do filtro de tarefa",
+          "en": "Task filter initial date"
+        },
+        "required": true,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "datetime",
+        "date_format": "%Y-%m-%d 00:00:00"
+      },
+      {
+        "key": "endDate",
+        "name": {
+          "pt_BR": "Data fim do filtro de tarefa",
+          "en": "Task filter end date"
+        },
+        "description": {
+          "pt_BR": "Data fim do filtro de tarefa",
+          "en": "Task filter end date"
+        },
+        "required": true,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "datetime",
+        "date_format": "%Y-%m-%d 00:00:00"
+      },
+      {
+        "key": "idUserTo",
+        "name": {
+          "pt_BR": "Código do usuário 'para'",
+          "en": "User 'to' id"
+        },
+        "description": {
+          "pt_BR": "Código do usuário 'para'",
+          "en": "User 'to' id"
+        },
+        "required": false,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "integer"
+      },
+      {
+        "key": "customerId",
+        "name": { "pt_BR": "Código do cliente", "en": "Customer id" },
+        "description": { "pt_BR": "Código do cliente", "en": "Customer id" },
+        "label": { "pt_BR": "Código do cliente", "en": "Customer id" },
+        "placeholder": { "pt_BR": "Selecione um código de cliente", "en": "Select an id for the customer" },
+        "required": false,
+        "visible": true,
+        "field_type": "dropdown",
+        "data_type": "integer",
+        "list": {
+          "type": "remote",
+          "helper_method": "customers"
+        }
+      },
+      {
+        "key": "teamId",
+        "name": {
+          "pt_BR": "Código da equipe",
+          "en": "Team id"
+        },
+        "description": {
+          "pt_BR": "Código da equipe para a tarefa",
+          "en": "Team id for the task"
+        },
+        "required": false,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "integer"
+      },
+      {
+        "key": "type",
+        "name": { "pt_BR": "Tipo da tarefa", "en": "Task type" },
+        "description": {"pt_BR": "Tipo da tarefa","en": "Task type"},
+        "label": {"pt_BR": "Tipo da tarefa","en": "Task type"},
+        "placeholder": { "pt_BR": "Selecione um tipo de tarefa", "en": "Select a task type" },
+        "required": false,
+        "visible": true,
+        "field_type": "dropdown",
+        "data_type": "integer",
+        "list": {
+          "type": "remote",
+          "helper_method": "taskTypes"
+        }
+      },
+      {
+        "key": "customerGroupId",
+        "name": { "pt_BR": "Código do grupo de clientes", "en": "Customer group id" },
+        "description": { "pt_BR": "Código do grupo de clientes", "en": "Customer group id" },
+        "label": { "pt_BR": "Código do grupo de clientes", "en": "Customer group id" },
+        "placeholder": { "pt_BR": "Selecione um código de grupo de clientes", "en": "Select a customer group id" },
+        "required": false,
+        "visible": true,
+        "field_type": "dropdown",
+        "data_type": "integer",
+        "list": {
+          "type": "remote",
+          "helper_method": "customerGroups"
+        }
+      },
+      {
+        "key": "status",
+        "name": { "pt_BR": "Status da tarefa", "en": "Task status" },
+        "description": { "pt_BR": "Estado da tarefa", "en": "Task status" },
+        "label": { "pt_BR": "Estado da tarefa", "en": "Task status" },
+        "placeholder": { "pt_BR": "Selecione um tipo de status da tarefa", "en": "Select a task status" },
+        "required": false,
+        "visible": true,
+        "advanced": true,
+        "field_type": "dropdown",
+        "data_type": "integer",
+        "list": {
+          "type": "local",
+          "data": [
+            {"label": "Não finalizada", "value": "0" },
+            {"label": "Finalizada automaticamente", "value": "1" },
+            {"label": "Finalizada manualmente", "value": "2" },
+            {"label": "Finalizada automaticamente ou manualmente", "value": "3" },
+            {"label": "Com pendência", "value": "4" },
+            {"label": "Iniciada ou finalizada", "value": "5" }
+          ]
+        }
+      },
+      {
+        "key": "orientation",
+        "name": {
+          "pt_BR": "Orientação da tarefa",
+          "en": "Task orientation"
+        },
+        "description": {
+          "pt_BR": "Orientação da tarefa",
+          "en": "Task orientation"
+        },
+        "required": false,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "string"
+      },
+      {
+        "key": "tags",
+        "name": {
+          "pt_BR": "Palavras chave da tarefa",
+          "en": "Task keywords"
+        },
+        "description": {
+          "pt_BR": "Palavras chave da tarefa. Se mais de uma, separar por vírgula",
+          "en": "Task keywords. If more than one, separate by comma"
+        },
+        "required": false,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "string"
+      },
+      {
+        "key": "priority",
+        "name": { "pt_BR": "Prioridade da tarefa", "en": "Task priority" },
+        "description": { "pt_BR": "Prioridade da tarefa", "en": "Task priority" },
+        "label": { "pt_BR": "Tipo de Empresa", "en": "Company: Type" },
+        "placeholder": { "pt_BR": "Selecione um tipo de prioridade", "en": "Select a priority type" },
+        "required": true,
+        "visible": true,
+        "advanced": true,
+        "field_type": "dropdown",
+        "data_type": "string",
+        "list": {
+          "type": "local",
+          "data": [
+            {"label": "Baixa", "value": "1" },
+            {"label": "Media", "value": "2" },
+            {"label": "Alta", "value": "3" }
+          ]
+        }
+      },
+    ]
+  },
+  "request": {
+    "method_name": "/tasks",
+    "response_field":"entityList",
+    "error_fields": ["message", "target","errorCode","errors"],
+    "json_api": true
+  }
+}

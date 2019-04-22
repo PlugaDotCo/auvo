@@ -1,0 +1,26 @@
+{
+  "name": "Listar os códigos de tipos de tarefa",
+  "helper_method_key": "taskTypes",
+  "requests": [
+    {
+      "method_name": "/taskTypes",
+      "response_field": [
+        "entityList"
+      ],
+      "params": {
+        "paramFilter": "",
+        "page": "1",
+        "pageSize": "100",
+        "order": "asc"
+      },
+      "mapping": {
+        "label": {
+          "fields": ["description"]
+        },
+        "value": {
+          "field": "id"
+        }
+      }
+    }
+  ]
+}

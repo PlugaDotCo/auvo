@@ -1,0 +1,76 @@
+{
+  "name": {
+    "pt_BR": "Editar parcialmente tarefa",
+    "en": "Edit task partially"
+  },
+  "action_key": "editTask",
+  "description": {
+    "pt_BR": "Editar parcialmente tarefa",
+    "en": "Edit task partially"
+  },
+  "action_fields": {
+    "fields": [
+      {
+        "key": "id",
+        "name": {
+          "pt_BR": "Código da tarefa à atualizar",
+          "en": "Task id to update"
+        },
+        "description": {
+          "pt_BR": "Código da tarefa à atualizar",
+          "en": "Task id to update"
+        },
+        "required": true,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "integer"
+      },
+      {
+        "key": "attachment.name",
+        "name": { "pt_BR": "Nome do arquivo de anexo", "en": "Attachment file name" },
+        "description": {
+          "pt_BR": "Nome do arquivo de anexo deve conter a extensão do arquivo. Exemplo: foto.jpg",
+          "en": "The attachment file name must contain the file extension. Example: foto.jpg"
+        },
+        "required": false,
+        "visible": true,
+        "field_type": "custom",
+        "data_type": "string"
+      },
+      {
+        "key": "attachment.file",
+        "name": { "pt_BR": "Arquivo de anexo", "en": "Attachment file" },
+        "description": {
+          "pt_BR": "Arquivo de anexo base64",
+          "en": "Base64 attachment file"
+        },
+        "required": false,
+        "visible": true,
+        "field_type": "custom",
+        "data_type": "string"
+      },
+      {
+        "key": "removeAllAttachmentsInsertedByMe",
+        "name": {
+          "pt_BR": "É para enviar pesquisa de satisfação",
+          "en": "Send satisfaction survey"
+        },
+        "description": {
+          "pt_BR": "É para enviar pesquisa de satisfação",
+          "en": "Send satisfaction survey"
+        },
+        "required": false,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "boolean"
+      }
+    ]
+  },
+    "request": {
+    "response_field":"result",
+    "error_fields": ["message", "target","errorCode","errors"],
+    "json_api": true
+  }
+}

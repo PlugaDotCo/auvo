@@ -1,0 +1,27 @@
+{
+  "name": "Listar os códigos de usuários",
+  "helper_method_key": "users",
+  "requests": [
+    {
+      "method_name": "/users",
+      "response_field": [
+        "entityList"
+      ],
+      "params": {
+        "paramFilter": "",
+        "page": "1",
+        "pageSize": "100",
+        "order": "asc",
+        "selectfields": "userID, name"
+      },
+      "mapping": {
+        "label": {
+          "fields": ["name"]
+        },
+        "value": {
+          "field": "userID"
+        }
+      }
+    }
+  ]
+}
