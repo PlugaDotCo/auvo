@@ -266,6 +266,22 @@
           ]
         }
       },
+      {
+        "key": "externalId",
+        "name": {
+          "pt_BR": "Código externo da tarefa",
+          "en": "Task external id"
+        },
+        "description": {
+          "pt_BR": "Código externo da tarefa",
+          "en": "Task external id"
+        },
+        "required": false,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "string"
+      },
     ]
   },
   "request": {
