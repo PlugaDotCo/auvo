@@ -1,11 +1,11 @@
 const plg = require('pluga-plg');
 const expect = require('chai').expect;
 
-const action = require('../../../lib/actions/customer/createCustomer');
+const action = require('../../lib/actions/Customer');
 
 const event = {
   meta: {
-    baseURI: 'process.env.BASE_URI'
+    baseURI: process.env.BASE_URI
   },
   auth: {
     accessToken: process.env.ACCESS_TOKEN
@@ -48,9 +48,26 @@ const event = {
         expect(customer.id).to.not.be.null;
         expect(customer.externalId).to.eq(event.input.externalId);
        
+        delete event.input.externalId;
+        event.input.id = customer.id;
+        event.input.name = "Pluga customer updated";
+        event.input.phoneNumber = "977777777";
+        event.input.email = "email1@pluga.com";
+
+        return action.handle(plg, event).then((result) => {
+        console.log('customer update result: ' +JSON.stringify(result));  
+
+        expect(result.id).to.eq(customer.id);
+        expect(result.description).to.eq("Pluga customer updated");
+        expect(result.externalId).to.eq("10");
+        
+        console.log('customer update SUCCESS');  
+
         done();
-     });
-    }).catch(done);
+         }).catch(done);
+
+      }).catch(done);
+    });
   });
 });
 

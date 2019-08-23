@@ -1,7 +1,7 @@
 const plg = require('pluga-plg');
 const expect = require('chai').expect;
 
-const action = require('../../../lib/actions/task/createTask');
+const action = require('../../lib/actions/Task');
 
 const event = {
   meta: {
@@ -11,13 +11,13 @@ const event = {
     accessToken: process.env.ACCESS_TOKEN
   },
   input: {
-   "idUserFrom":12078,
-   "idUserTo":12078,
+   "idUserFrom":120,
+   "idUserTo":120,
    "orientation":"orientation",
    "taskDate":"2019-03-26T14:00:00",
    "sendSatisfactionSurvey":false,
    "priority":"1",
-   "externalId":"5",
+   "externalId":"7",
    "longitude":"85",
    "latitude":"85",
    "address":"rua rua 123",
@@ -40,7 +40,7 @@ const event = {
 };
 
   describe('Action: Create task', function () {
-  it('returns success with valid task - teste -', function (done) {
+  it('should register a task', function (done) {
     plg.axios({
       method: 'get',
       url: `${event.meta.baseURI}/login`,
@@ -48,15 +48,33 @@ const event = {
     }).then((res) => {
       event.auth.accessToken = res.data.result.accessToken;
 
-      return action.handle(plg, event).then((task) => {
+      action.handle(plg, event).then((task) => {
 
-        console.log('task result: ' +JSON.stringify(task));  
-        expect(task.id).to.not.be.null;
+        console.log('task register result: ' +JSON.stringify(task));  
+        expect(task.taskID).to.not.be.null;
         expect(task.orientation).to.eq(event.input.orientation);
        
+        console.log('task registration SUCCESS');  
+        console.log('task update');  
+        
+        delete event.input.externalId;
+        event.input.id = task.taskID;
+        event.input.orientation = "orientation update";
+
+        return action.handle(plg, event).then((result) => {
+        console.log('task update result: ' +JSON.stringify(result));  
+
+        expect(result.taskID).to.eq(task.taskID);
+        expect(result.orientation).to.eq("orientation update");
+        expect(result.externalId).to.eq("7");
+        
+        console.log('task update SUCCESS');  
+
         done();
-     });
-    }).catch(done);
+         }).catch(done);
+
+      }).catch(done);
+    });
   });
 });
 

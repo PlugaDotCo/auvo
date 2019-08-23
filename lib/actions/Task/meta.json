@@ -1,15 +1,31 @@
 {
   "name": {
-    "pt_BR": "Cadastrar tarefa",
-    "en": "Create task"
+    "pt_BR": "Cadastra ou atualiza tarefa",
+    "en": "Create or update task"
   },
-  "action_key": "createTask",
+  "action_key": "upsertTask",
   "description": {
-    "pt_BR": "Cadastrar tarefa",
-    "en": "Create task"
+    "pt_BR": "Cadastra ou atualiza tarefa",
+    "en": "Create or update task"
   },
   "action_fields": {
     "fields": [
+        {
+        "key": "id",
+        "name": {
+          "pt_BR": "Código da tarefa",
+          "en": "Task id"
+        },
+        "description": {
+          "pt_BR": "Código da tarefa. Enviar somente se for atualização",
+          "en": "Task id. Only for updates"
+        },
+        "required": false,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "integer"
+      },
       {
         "key": "taskDate",
         "name": {
@@ -280,11 +296,5 @@
         "data_type": "boolean"
       },
     ]
-  },
-    "request": {
-    "method_name": "/tasks",
-    "response_field":"result",
-    "error_fields": ["message", "target","errorCode","errors"],
-    "json_api": true
   }
 }

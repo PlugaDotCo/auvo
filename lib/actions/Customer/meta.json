@@ -1,15 +1,31 @@
 {
   "name": {
-    "pt_BR": "Cadastrar cliente",
-    "en": "Create customer"
+    "pt_BR": "Cadastrar ou atualizar cliente",
+    "en": "Create or update customer"
   },
-  "action_key": "createCustomer",
+  "action_key": "upsertCustomer",
   "description": {
-    "pt_BR": "Cadastrar cliente",
-    "en": "Create customer"
+    "pt_BR": "Cadastrar ou atualizar cliente",
+    "en": "Create or update customer"
   },
   "action_fields": {
     "fields": [
+        {
+        "key": "id",
+        "name": {
+          "pt_BR": "Código do cliente",
+          "en": "Customer id"
+        },
+        "description": {
+          "pt_BR": "Código do cliente. Enviar somente se for atualização",
+          "en": "Customer id. Only for updates"
+        },
+        "required": false,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "integer"
+      },
       {
         "key": "externalId",
         "name": {
@@ -17,8 +33,8 @@
           "en": "External id"
         },
         "description": {
-          "pt_BR": "Código da tarefa na aplicação de origem",
-          "en": "Task id in the source application"
+          "pt_BR": "Código do cliente na aplicação de origem",
+          "en": "Customer id in the source application"
         },
         "required": false,
         "visible": true,
@@ -314,11 +330,5 @@
         "dropdown_multiple": true
       },
     ]
-  },
-    "request": {
-    "method_name": "/customers",
-    "response_field":"result",
-    "error_fields": ["message", "target","errorCode","errors"],
-    "json_api": true
   }
 }
