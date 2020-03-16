@@ -1,0 +1,23 @@
+{
+  "name": "Listar os códigos de grupos de cliente",
+  "helper_method_key": "customerGroups",
+  "requests": [
+    {
+      "method_name": "/customerGroups",
+      "response_field": [
+        "entityList"
+      ],
+      "params": {
+        "paramFilter": ""
+      },
+      "mapping": {
+        "label": {
+          "fields": ["description"]
+        },
+        "value": {
+          "field": "id"
+        }
+      }
+    }
+  ]
+}

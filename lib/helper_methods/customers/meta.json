@@ -1,0 +1,27 @@
+{
+  "name": "Listar os códigos de clientes",
+  "helper_method_key": "customers",
+  "requests": [
+    {
+      "method_name": "/customers",
+      "response_field": [
+        "entityList"
+      ],
+      "params": {
+        "paramFilter": "",
+        "page": "1",
+        "pageSize": "100",
+        "order": "asc",
+        "selectfields": "id, description"
+      },
+      "mapping": {
+        "label": {
+          "fields": ["description"]
+        },
+        "value": {
+          "field": "id"
+        }
+      }
+    }
+  ]
+}

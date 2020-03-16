@@ -1,0 +1,718 @@
+{
+  "name": {
+    "pt_BR": "Cadastrar ou atualizar usuário",
+    "en": "Create or update user"
+  },
+  "action_key": "upsertUser",
+  "description": {
+    "pt_BR": "Cadastrar ou atualizar usuário",
+    "en": "Create or update user"
+  },
+  "action_fields": {
+    "fields": [
+      {
+        "key": "id",
+        "name": {
+          "pt_BR": "Código do usuário",
+          "en": "User id"
+        },
+        "description": {
+          "pt_BR": "Código do usuário. Enviar somente se for atualização",
+          "en": "User id. Only for updates"
+        },
+        "required": false,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "integer"
+      },
+      {
+        "key": "externalId",
+        "name": {
+          "pt_BR": "Código externo",
+          "en": "External id"
+        },
+        "description": {
+          "pt_BR": "Código do usuário na aplicação de origem",
+          "en": "User id in the source application"
+        },
+        "required": false,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "string"
+      },
+      {
+        "key": "name",
+        "name": {
+          "pt_BR": "Nome do usuário",
+          "en": "User name"
+        },
+        "description": {
+          "pt_BR": "Nome do usuário",
+          "en": "User name"
+        },
+        "required": true,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "string"
+      },
+      {
+        "key": "smartPhoneNumber",
+        "name": {
+          "pt_BR": "Telefne celular do usuário",
+          "en": "User smartPhone number"
+        },
+        "description": {
+          "pt_BR": "Telefne celular do usuário",
+          "en": "User smartPhone number"
+        },
+        "required": false,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "string"
+      },
+      {
+        "key": "culture",
+        "name": { "pt_BR": "Cultura", "en": "Culture" },
+        "description": { "pt_BR": "Tipo de cultura do usuário", "en": "User culture type" },
+        "label": { "pt_BR": "Tipo de cultura do usuário", "en": "User culture type" },
+        "placeholder": { "pt_BR": "Selecione um tipo de cultura do usuário", "en": "Select a culture type for the user" },
+        "required": true,
+        "visible": true,
+        "advanced": true,
+        "field_type": "dropdown",
+        "data_type": "string",
+        "list": {
+          "type": "local",
+          "data": [
+            {"label": "Portugûes - Brasil", "value": "pt-BR" },
+            {"label": "Inglês - Estados Unidos", "value": "en-US" }
+          ]
+        }
+      },
+      {
+        "key": "jobPosition",
+        "name": {
+          "pt_BR": "Cargo do usuário",
+          "en": "User job position"
+        },
+        "description": {
+          "pt_BR": "Cargo do usuário",
+          "en": "User job position"
+        },
+        "required": false,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "string"
+      },
+      {
+        "key": "userType",
+        "name": { "pt_BR": "Tipo de usuário", "en": "User type" },
+        "description": { "pt_BR": "Tipo do usuário", "en": "User type" },
+        "label": { "pt_BR": "Tipo do usuário", "en": "User type" },
+        "placeholder": { "pt_BR": "Selecione um tipo de usuário", "en": "Select a user type" },
+        "required": true,
+        "visible": true,
+        "advanced": true,
+        "field_type": "dropdown",
+        "data_type": "string",
+        "list": {
+          "type": "local",
+          "data": [
+            {"label": "Usuário", "value": "1" },
+            {"label": "Gestor de equipes", "value": "2" },
+            {"label": "Administrador", "value": "3" }
+          ]
+        }
+      },
+      {
+        "key": "password",
+        "name": {
+          "pt_BR": "Senha",
+          "en": "Password"
+        },
+        "description": {
+          "pt_BR": "Senha deve ter entre 6 e 14 caracteres",
+          "en": "Password must have between 6 and 14 characters"
+        },
+        "required": true,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "string",
+        "max": 14
+      },
+      {
+        "key": "workDaysOfWeek",
+        "name": {
+          "pt_BR": "Dias de trabalho da semana",
+          "en": "Work days of the week"
+        },
+        "description": {
+          "pt_BR": "Dias da semana numérico, onde Domingo é 1 e sábado é 7",
+          "en": "Numeric days of the week, where Sunday is 1 and Saturday is 7"
+        },
+        "required": false,
+        "visible": true,
+        "field_type": "array",
+        "data_type": "integer"
+      },
+      {
+        "key": "startWorkHour",
+        "name": {
+          "pt_BR": "Hora de entrada no serviço",
+          "en": "Start work hour"
+        },
+        "description": {
+          "pt_BR": "Hora de entrada no serviço no formato HH:mm:SS",
+          "en": "Start work hour in the format HH:mm:SS"
+        },
+        "required": false,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "datetime",
+        "date_format": "%H:%M:%S"
+      },
+      {
+        "key": "endWorkHour",
+        "name": {
+          "pt_BR": "Hora de saída no serviço",
+          "en": "End work hour"
+        },
+        "description": {
+          "pt_BR": "Hora de saída no serviço no formato HH:mm:SS",
+          "en": "End work hour in the format HH:mm:SS"
+        },
+        "required": false,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "datetime",
+        "date_format": "%H:%M:%S"
+      },
+      {
+        "key": "startLunchHour",
+        "name": {
+          "pt_BR": "Hora de início do almoço",
+          "en": "Lunch start hour"
+        },
+        "description": {
+          "pt_BR": "Hora de início do almoço no formato HH:mm:SS",
+          "en": "Lunch start hour in the format HH:mm:SS"
+        },
+        "required": false,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "datetime",
+        "date_format": "%H:%M:%S"
+      },
+      {
+        "key": "endLunchHour",
+        "name": {
+          "pt_BR": "Hora de volta do almoço",
+          "en": "Lunch end hour"
+        },
+        "description": {
+          "pt_BR": "Hora de volta do almoço no formato HH:mm:SS",
+          "en": "Lunch end hour in the format HH:mm:SS"
+        },
+        "required": false,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "datetime",
+        "date_format": "%H:%M:%S"
+      },
+      {
+        "key": "hourValue",
+        "name": {
+          "pt_BR": "Valor da hora de trabalho",
+          "en": "Hour value"
+        },
+        "description": {
+          "pt_BR": "Valor da hora de trabalho",
+          "en": "Hour value"
+        },
+        "required": false,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "decimal"
+      },
+      {
+        "key": "checkInManual",
+        "name": {
+          "pt_BR": "Check in manual?",
+          "en": "Manual checkin?"
+        },
+        "description": {
+          "pt_BR": "Check in manual?",
+          "en": "Manual checkin?"
+        },
+        "required": true,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "boolean"
+      },
+      {
+        "key": "latitude",
+        "name": {
+          "pt_BR": "Latitude do endereço",
+          "en": "Adress latitude"
+        },
+        "description": {
+          "pt_BR": "Latitude do endereço",
+          "en": "Adress latitude"
+        },
+        "required": false,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "integer"
+      },
+      {
+        "key": "longitude",
+        "name": {
+          "pt_BR": "Longitude do endereço",
+          "en": "Address longitude"
+        },
+        "description": {
+          "pt_BR": "Longitude do endereço",
+          "en": "Address longitude"
+        },
+        "required": false,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "integer"
+      },
+      {
+        "key": "address",
+        "name": {
+          "pt_BR": "Endereço",
+          "en": "Address"
+        },
+        "description": {
+          "pt_BR": "Endereço",
+          "en": "Address"
+        },
+        "required": false,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "string"
+      },
+      {
+        "key": "openTaskInPlace",
+        "name": {
+          "pt_BR": "Abrir tarefa no local?",
+          "en": "Open task in place?"
+        },
+        "description": {
+          "pt_BR": "Abrir tarefa no local?",
+          "en": "Open task in place?"
+        },
+        "required": false,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "boolean"
+      },
+      {
+        "key": "galleryPhotos",
+        "name": {
+          "pt_BR": "Permitir pegar fotos da galeria através do aplicativo?",
+          "en": "Allow take pictures from gallery from the app?"
+        },
+        "description": {
+          "pt_BR": "Permitir pegar fotos da galeria através do aplicativo?",
+          "en": "Allow take pictures from gallery from the app?"
+        },
+        "required": false,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "boolean"
+      },
+      {
+        "key": "gpsFrequency",
+        "name": {
+          "pt_BR": "Frequência do gps",
+          "en": "Gps frequency"
+        },
+        "description": {
+          "pt_BR": "Frequência do gps",
+          "en": "Gps frequency"
+        },
+        "required": false,
+        "visible": false,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "integer"
+      },
+      {
+        "key": "login",
+        "name": {
+          "pt_BR": "Login",
+          "en": "Login"
+        },
+        "description": {
+          "pt_BR": "Login",
+          "en": "Login"
+        },
+        "required": true,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "string"
+      },
+      {
+        "key": "email",
+        "name": {
+          "pt_BR": "Email",
+          "en": "Email"
+        },
+        "description": {
+          "pt_BR": "Email",
+          "en": "Email"
+        },
+        "required": false,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "string"
+      },
+      {
+        "key": "unavailableForTasks",
+        "name": {
+          "pt_BR": "Indisponível para tarefas?",
+          "en": "Unavailable for tasks?"
+        },
+        "description": {
+          "pt_BR": "Indisponível para tarefas?",
+          "en": "Unavailable for tasks?"
+        },
+        "required": false,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "boolean"
+      },
+      {
+        "key": "editTaskAfterCheckout",
+        "name": {
+          "pt_BR": "Permitir editar tarefa após checkout?",
+          "en": "Allow edit task after checkout?"
+        },
+        "description": {
+          "pt_BR": "Permitir editar tarefa após checkout?",
+          "en": "Allow edit task after checkout?"
+        },
+        "required": false,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "boolean"
+      },
+      {
+        "key": "informStartTravel",
+        "name": {
+          "pt_BR": "Utilizar informe de início de deslocamento?",
+          "en": "Inform start travel?"
+        },
+        "description": {
+          "pt_BR": "Utilizar informe de início de deslocamento?",
+          "en": "Inform start travel?"
+        },
+        "required": false,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "boolean"
+      },
+      {
+        "key": "changeBasePoint",
+        "name": {
+          "pt_BR": "Permitir alterar ponto base?",
+          "en": "Allow change base point?"
+        },
+        "description": {
+          "pt_BR": "Permitir alterar ponto base?",
+          "en": "Allow change base point?"
+        },
+        "required": false,
+        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "boolean"
+      },
+      {
+        "key": "monitoringNotification.gpsActivation",
+        "name": { "pt_BR": "Notificação de monitoramento", "en": "Monitoring notification" },
+        "description": { "pt_BR": "monitoramento de ativação do gps", "en": "Gps activation monitoring" },
+        "label": { "pt_BR": "Notifica ativação de gps", "en": "Notify gps activation" },
+        "placeholder": { "pt_BR": "Selecione o tipo de notificação", "en": "Selecione o tipo de notificação" },
+        "required": false,
+        "visible": true,
+        "advanced": true,
+        "field_type": "dropdown",
+        "data_type": "string",
+        "list": {
+          "type": "local",
+          "data": [
+            {"label": "Email", "value": "1" },
+            {"label": "Push", "value": "2" },
+            {"label": "Todos", "value": "3" }
+          ]
+        }
+      },
+      {
+        "key": "monitoringNotification.gpsDisabling",
+        "name": { "pt_BR": "Notificação de monitoramento", "en": "Monitoring notification" },
+        "description": { "pt_BR": "monitoramento de desativação do gps", "en": "Gps disabling monitoring" },
+        "label": { "pt_BR": "Notifica desativação de gps", "en": "Notify gps disabling" },
+        "placeholder": { "pt_BR": "Selecione o tipo de notificação", "en": "Selecione o tipo de notificação" },
+        "required": false,
+        "visible": true,
+        "advanced": true,
+        "field_type": "dropdown",
+        "data_type": "string",
+        "list": {
+          "type": "local",
+          "data": [
+            {"label": "Email", "value": "1" },
+            {"label": "Push", "value": "2" },
+            {"label": "Todos", "value": "3" }
+          ]
+        }
+      },
+      {
+        "key": "monitoringNotification.appLogin",
+        "name": { "pt_BR": "Notificação de monitoramento", "en": "Monitoring notification" },
+        "description": { "pt_BR": "monitoramento de login no app", "en": "App loging monitoring" },
+        "label": { "pt_BR": "Notifica login no app", "en": "Notify app loging" },
+        "placeholder": { "pt_BR": "Selecione o tipo de notificação", "en": "Selecione o tipo de notificação" },
+        "required": false,
+        "visible": true,
+        "advanced": true,
+        "field_type": "dropdown",
+        "data_type": "string",
+        "list": {
+          "type": "local",
+          "data": [
+            {"label": "Email", "value": "1" },
+            {"label": "Push", "value": "2" },
+            {"label": "Todos", "value": "3" }
+          ]
+        }
+      },
+      {
+        "key": "monitoringNotification.appLogout",
+        "name": { "pt_BR": "Notificação de monitoramento", "en": "Monitoring notification" },
+        "description": { "pt_BR": "monitoramento de logout no app", "en": "App logout monitoring" },
+        "label": { "pt_BR": "Notifica logout no app", "en": "Notify app logout" },
+        "placeholder": { "pt_BR": "Selecione o tipo de notificação", "en": "Selecione o tipo de notificação" },
+        "required": false,
+        "visible": true,
+        "advanced": true,
+        "field_type": "dropdown",
+        "data_type": "string",
+        "list": {
+          "type": "local",
+          "data": [
+            {"label": "Email", "value": "1" },
+            {"label": "Push", "value": "2" },
+            {"label": "Todos", "value": "3" }
+          ]
+        }
+      },
+      {
+        "key": "employeeNotification.basePointChange",
+        "name": { "pt_BR": "Notificação de colaborador", "en": "Employee notification" },
+        "description": { "pt_BR": "monitoramento de troca de ponto base", "en": "Base point change monitoring" },
+        "label": { "pt_BR": "Notifica troca do ponto base", "en": "Notify base point change" },
+        "placeholder": { "pt_BR": "Selecione o tipo de notificação", "en": "Selecione o tipo de notificação" },
+        "required": false,
+        "visible": true,
+        "advanced": true,
+        "field_type": "dropdown",
+        "data_type": "string",
+        "list": {
+          "type": "local",
+          "data": [
+            {"label": "Email", "value": "1" },
+            {"label": "Push", "value": "2" },
+            {"label": "Todos", "value": "3" }
+          ]
+        }
+      },
+      {
+        "key": "clientNotification.adressChange",
+        "name": { "pt_BR": "Notificação de cliente", "en": "Customer notification" },
+        "description": { "pt_BR": "monitoramento de troca de endereço do cliente", "en": "Customer adress change monitoring" },
+        "label": { "pt_BR": "Notifica troca do de endereço do cliente", "en": "Notify customer adress change" },
+        "placeholder": { "pt_BR": "Selecione o tipo de notificação", "en": "Selecione o tipo de notificação" },
+        "required": false,
+        "visible": true,
+        "advanced": true,
+        "field_type": "dropdown",
+        "data_type": "string",
+        "list": {
+          "type": "local",
+          "data": [
+            {"label": "Email", "value": "1" },
+            {"label": "Push", "value": "2" },
+            {"label": "Todos", "value": "3" }
+          ]
+        }
+      },
+      {
+        "key": "taskNotification.checkIn",
+        "name": { "pt_BR": "Notificação de tarefa", "en": "Task notification" },
+        "description": { "pt_BR": "monitoramento de checkin da tarefa", "en": "Task checkin monitoring" },
+        "label": { "pt_BR": "Notifica checkin da tarefa", "en": "Notify task checkin" },
+        "placeholder": { "pt_BR": "Selecione o tipo de notificação", "en": "Selecione o tipo de notificação" },
+        "required": false,
+        "visible": true,
+        "advanced": true,
+        "field_type": "dropdown",
+        "data_type": "string",
+        "list": {
+          "type": "local",
+          "data": [
+            {"label": "Email", "value": "1" },
+            {"label": "Push", "value": "2" },
+            {"label": "Todos", "value": "3" }
+          ]
+        }
+      },
+      {
+        "key": "taskNotification.checkout",
+        "name": { "pt_BR": "Notificação de tarefa", "en": "Task notification" },
+        "description": { "pt_BR": "monitoramento de checkout da tarefa", "en": "Task checkout monitoring" },
+        "label": { "pt_BR": "Notifica checkout da tarefa", "en": "Notify task checkout" },
+        "placeholder": { "pt_BR": "Selecione o tipo de notificação", "en": "Selecione o tipo de notificação" },
+        "required": false,
+        "visible": true,
+        "advanced": true,
+        "field_type": "dropdown",
+        "data_type": "string",
+        "list": {
+          "type": "local",
+          "data": [
+            {"label": "Email", "value": "1" },
+            {"label": "Push", "value": "2" },
+            {"label": "Todos", "value": "3" }
+          ]
+        }
+      },
+      {
+        "key": "taskNotification.delay",
+        "name": { "pt_BR": "Notificação de tarefa", "en": "Task notification" },
+        "description": { "pt_BR": "monitoramento de atraso", "en": "Delay monitoring" },
+        "label": { "pt_BR": "Notifica atraso da tarefa", "en": "Notify task delay" },
+        "placeholder": { "pt_BR": "Selecione o tipo de notificação", "en": "Selecione o tipo de notificação" },
+        "required": false,
+        "visible": true,
+        "advanced": true,
+        "field_type": "dropdown",
+        "data_type": "string",
+        "list": {
+          "type": "local",
+          "data": [
+            {"label": "Email", "value": "1" },
+            {"label": "Push", "value": "2" },
+            {"label": "Todos", "value": "3" }
+          ]
+        }
+      },
+      {
+        "key": "taskNotification.rescheduling",
+        "name": { "pt_BR": "Notificação de tarefa", "en": "Task notification" },
+        "description": { "pt_BR": "monitoramento de reagendamento", "en": "Rescheduling monitoring" },
+        "label": { "pt_BR": "Notifica reagendamento da tarefa", "en": "Notify task rescheduling" },
+        "placeholder": { "pt_BR": "Selecione o tipo de notificação", "en": "Selecione o tipo de notificação" },
+        "required": false,
+        "visible": true,
+        "advanced": true,
+        "field_type": "dropdown",
+        "data_type": "string",
+        "list": {
+          "type": "local",
+          "data": [
+            {"label": "Email", "value": "1" },
+            {"label": "Push", "value": "2" },
+            {"label": "Todos", "value": "3" }
+          ]
+        }
+      },
+      {
+        "key": "taskNotification.researchAnswer",
+        "name": { "pt_BR": "Notificação de tarefa", "en": "Task notification" },
+        "description": { "pt_BR": "monitoramento de resposta da pesquisa", "en": "Research answer monitoring" },
+        "label": { "pt_BR": "Notifica resposta de pesquisa da tarefa", "en": "Notify task research answer rescheduling" },
+        "placeholder": { "pt_BR": "Selecione o tipo de notificação", "en": "Selecione o tipo de notificação" },
+        "required": false,
+        "visible": true,
+        "advanced": true,
+        "field_type": "dropdown",
+        "data_type": "string",
+        "list": {
+          "type": "local",
+          "data": [
+            {"label": "Email", "value": "1" },
+            {"label": "Push", "value": "2" },
+            {"label": "Todos", "value": "3" }
+          ]
+        }
+      },
+      {
+        "key": "taskNotification.taskDelete",
+        "name": { "pt_BR": "Notificação de tarefa", "en": "Task notification" },
+        "description": { "pt_BR": "monitoramento de exclusão da tarefa", "en": "Task exclusion monitoring" },
+        "label": { "pt_BR": "Notifica exclusão da tarefa", "en": "Notify task exclusion" },
+        "placeholder": { "pt_BR": "Selecione o tipo de notificação", "en": "Selecione o tipo de notificação" },
+        "required": false,
+        "visible": true,
+        "advanced": true,
+        "field_type": "dropdown",
+        "data_type": "string",
+        "list": {
+          "type": "local",
+          "data": [
+            {"label": "Email", "value": "1" },
+            {"label": "Push", "value": "2" },
+            {"label": "Todos", "value": "3" }
+          ]
+        }
+      },
+      {
+        "key": "taskNotification.travelStart",
+        "name": { "pt_BR": "Notificação de tarefa", "en": "Task notification" },
+        "description": { "pt_BR": "monitoramento de início deslocamento", "en": "Travel start monitoring" },
+        "label": { "pt_BR": "Notifica início deslocamento", "en": "Notify travel start" },
+        "placeholder": { "pt_BR": "Selecione o tipo de notificação", "en": "Selecione o tipo de notificação" },
+        "required": false,
+        "visible": true,
+        "advanced": true,
+        "field_type": "dropdown",
+        "data_type": "string",
+        "list": {
+          "type": "local",
+          "data": [
+            {"label": "Email", "value": "1" },
+            {"label": "Push", "value": "2" },
+            {"label": "Todos", "value": "3" }
+          ]
+        }
+      }
+    ]
+  }
+}

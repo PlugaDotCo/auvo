@@ -1,39 +1,39 @@
 {
   "app_id": "auvo",
   "name": "Auvo",
-  "color": "#000000",
+  "color": "#800080",
   "description": {
-    "pt_BR": "My awesome app description!",
-    "en": "My awesome app description!"
+    "pt_BR": "O Auvo é a solução completa para gestão de equipes externas! Localize seus colaboradores em tempo real, agende tarefas, tenha um sistema online de OS, e saiba tudo que ocorre na operação.",
+    "en": "Auvo is the complete solution for managing external teams! Locate your collaborators in real time, schedule tasks, have an online OS system, and know everything that happens in the operation."
   },
-  "website": "https://example.com",
-  "signup_url": "https://example.com/signup",
+  "website": "https://www.auvo.com/",
+  "signup_url": "https://www.auvo.com/testar-gratis",
   "api_base_uri": {
     "production": {
-      "uri": "https://api.example.com",
+      "uri": "https://api.auvo.com.br/v2",
       "label": "Produção",
       "default": true
     }
   },
   "authentication": {
-    "type": "basic_auth",
+    "ping_request": {
+      "method_name": "/login",
+      "status":{
+      "field": "authenticated",
+      "value": "true"
+    },
+    "type": "pass_through_query_string", 
     "fields": [
       {
-        "name": "api_key",
-        "label": "API key",
-        "mapping": "username",
+        "name": "apiKey",
+        "label": "Api key",
         "type": "text"
       },
       {
-        "name": "api_secret",
-        "label": "API secret",
-        "mapping": "password",
-        "type": "password"
+        "name": "apiToken",
+        "label": "Api token",
+        "type": "text"
       }
-    ],
-    "ping_request": {
-      "method": "/ping",
-      "params": { "limit": 1 }
-    }
+    ]
   }
 }
