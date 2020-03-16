@@ -328,7 +328,7 @@
           "helper_method": "users"
         },
         "dropdown_multiple": true
-      },
+      }
     ]
   }
 }
