@@ -2,6 +2,7 @@ const plg = require('pluga-plg');
 const expect = require('chai').expect;
 
 const action = require('../../lib/actions/upsert_user');
+const { getBearerAccessToken } = require('../test_helper');
 
 const event = {
   meta: {
@@ -60,6 +61,10 @@ const event = {
     }
   }
 };
+
+before(async function () {
+  event.auth.accessToken = await getBearerAccessToken(plg);
+});
 
 describe('Action: Create user', function () {
   it('should register an user', function (done) {

@@ -2,6 +2,7 @@ const plg = require('pluga-plg');
 const expect = require('chai').expect;
 
 const action = require('../../lib/actions/upsert_customer');
+const { getBearerAccessToken } = require('../test_helper');
 
 const event = {
   meta: {
@@ -25,7 +26,7 @@ const event = {
     maximumVisitTime: 1,
     unitMaximumTime: 3,
     cpfCnpj: "71728976090",
-    // groupsId: '31171, 31172',
+    groupsId: '31171, 31172',
     /*managerTeamsId: [],*/
     // managersId: '12080, 12111',
     // segmentId: 1096, //quando não existe volta com err.response.data = "" - tratar isso
@@ -33,6 +34,10 @@ const event = {
     adressComplement: "copacabana"
   }
 };
+
+before(async function () {
+  event.auth.accessToken = await getBearerAccessToken(plg);
+});
 
 describe('Action: Upsert customer', function () {
   let customer;
@@ -54,13 +59,12 @@ describe('Action: Upsert customer', function () {
     event.input.phoneNumber = "977777777";
     event.input.email = "email1@pluga.com";
 
-    console.log('event befor update = ', event.input);
-
     action.handle(plg, event).then((result) => {
-      // console.log('customer update result: ', result);  
       expect(result.id).to.eq(customer.id);
       expect(result.description).to.eq("Pluga customer updated");
       expect(result.externalId).to.eq("10");
+      expect(result.phoneNumber[0]).to.eq("977777777");
+      expect(result.email[0]).to.eq("email1@pluga.com");
       
       done();
     }).catch(done);
