@@ -16,10 +16,11 @@ const event = {
     externalId: "200",
     name: "usuário upsert",
     smartPhoneNumber: "6212365478",
+    culture: 'pt-BR',
     jobPosition: "pluga",
     userType: 2,
     password: "1234567",
-    workDaysOfWeek: [2,3,4,5,6],
+    workDaysOfWeek: "2, 3, 4, 5, 6",
     startWorkHour: "08:00",
     endWorkHour: "18:00",
     startLunchHour: "12:00",
@@ -66,33 +67,30 @@ before(async function () {
   event.auth.accessToken = await getBearerAccessToken(plg);
 });
 
-describe('Action: Create user', function () {
-  it('should register an user', function (done) {
-    action.handle(plg, event).then((user) => {
-
-      console.log('user register result: ' +JSON.stringify(user));  
-      expect(user.userID).to.not.be.null;
-      expect(user.name).to.eq(event.input.name);
+describe('Action: Upsert user', function () {
+  let user;
+  it('returns success when register a new user', function (done) {
+    action.handle(plg, event).then((result) => {
+      expect(result.userID).to.not.be.null;
+      expect(result.name).to.eq(event.input.name);
       
-      console.log('user registration SUCCESS');  
-      console.log('user update');  
-      
-      delete event.input.externalId;
-      event.input.id = user.userID;
-      event.input.name = "usuário upsert pluga";
-
-      return action.handle(plg, event).then((result) => {
-      console.log('user update result: ' +JSON.stringify(result));  
-
-      expect(result.userID).to.eq(user.userID);
-      expect(result.name).to.eq("usuário upsert pluga");
-      expect(result.externalId).to.eq("200");
-      
-      console.log('user update SUCCESS');  
-
-      done();
-        }).catch(done);
-
+      user = result;
+      done();  
     }).catch(done);
   });
+
+  it('returns success when update user', function(done){
+    delete event.input.externalId;
+    event.input.id = user.userID;
+    event.input.name = "usuário updated pluga";
+    event.input.workDaysOfWeek = "2, 3, 4, 5";
+
+    action.handle(plg, event).then((result) => {
+      expect(result.userID).to.eq(user.userID);
+      expect(result.name).to.eq("usuário updated pluga");
+      expect(result.externalId).to.eq("200");
+
+      done();
+    }).catch(done);
+  })
 });

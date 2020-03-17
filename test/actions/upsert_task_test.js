@@ -13,8 +13,6 @@ const event = {
     apiToken: process.env.API_TOKEN
   },
   input: {
-   idUserFrom: 120,
-   idUserTo: 120,
    orientation: "orientation",
    taskDate: "2019-03-26T14:00:00",
    sendSatisfactionSurvey: false,
@@ -24,20 +22,8 @@ const event = {
    latitude: "85",
    address: "rua rua 123",
    checkinType: "1",
-   attachments: [
-      {
-        name:  "fileNamePluga.txt",
-        file:  "dGVzdGUgcGx1Z2E="
-      },
-            {
-        name:  "fileNamePluga2.txt",
-        file:  "dGVzdGUgcGx1Z2EgMg=="
-      }
-   ],
-   keyWords: [
-      "1792",
-      "9254"
-   ]
+   attachments: "fileNamePluga.txt/dGVzdGUgcGx1Z2E=, fileNamePluga2.txt/dGVzdGUgcGx1Z2EgMg==",
+   keyWords: "1792, 9254"
   }
 };
 
@@ -45,32 +31,33 @@ before(async function () {
   event.auth.accessToken = await getBearerAccessToken(plg);
 });
 
-describe('Action: Create task', function () {
-  it('should register a task', function (done) {
-    action.handle(plg, event).then((task) => {
-      console.log('task register result: ', task);  
-      expect(task.taskID).to.not.be.null;
-      expect(task.orientation).to.eq(event.input.orientation);
+describe('Action: Upsert task', function () {
+  let task;
+  it('returns success when register a new task', function (done) {
+    action.handle(plg, event).then((result) => {  
+      // console.log('result =', result);
+      expect(result.taskID).to.not.be.null;
+      expect(result.orientation).to.eq(event.input.orientation);
       
-      console.log('task registration SUCCESS');  
-      console.log('task update');  
-      
-      delete event.input.externalId;
-      event.input.id = task.taskID;
-      event.input.orientation = "orientation update";
-
-      return action.handle(plg, event).then((result) => {
-      console.log('task update result: ' +JSON.stringify(result));  
-
-      expect(result.taskID).to.eq(task.taskID);
-      expect(result.orientation).to.eq("orientation update");
-      expect(result.externalId).to.eq("7");
-      
-      console.log('task update SUCCESS');  
-
+      task = result;
       done();
-        }).catch(done);
-
     }).catch(done);
   });
+
+  it('returns success when update task', function(done){
+    delete event.input.externalId;
+    event.input.idUserFrom = task.idUserFrom
+    event.input.idUserTo = task.idUserTo
+    event.input.id = task.taskID;
+    event.input.orientation = "orientation update";
+
+    action.handle(plg, event).then((result) => {
+      expect(result.taskID).to.eq(task.taskID);
+      expect(result.orientation).to.eq(event.input.orientation);
+      expect(result.externalId).to.eq("7");
+      expect(result.idUserFrom).to.eq(task.idUserFrom);
+
+      done();
+    }).catch(done);
+  }); 
 });

@@ -15,7 +15,7 @@ const event = {
   input: {
     externalId: "10",
     name: "Pluga customer",
-    phoneNumber: "988888888, 977777777",
+    phoneNumber: "988888888, 97 777 77 7 7",
     email: "email1@pluga.com, email2@pluga.com",
     manager: "Pluga managers name",
     managerJobPosition: "Pluga director",
@@ -26,8 +26,8 @@ const event = {
     maximumVisitTime: 1,
     unitMaximumTime: 3,
     cpfCnpj: "71728976090",
-    groupsId: '31171, 31172',
-    /*managerTeamsId: [],*/
+    // groupsId: '31171, 31172', // valores invalidos //verificar como o meta ta enviando isso
+    managerTeamsId: [],
     // managersId: '12080, 12111',
     // segmentId: 1096, //quando não existe volta com err.response.data = "" - tratar isso
     active: true,
@@ -41,30 +41,31 @@ before(async function () {
 
 describe('Action: Upsert customer', function () {
   let customer;
-  it('returns success with valid customer', function (done) {
+  it('returns success with valid new customer', function (done) {
     action.handle(plg, event).then((result) => {
-      // console.log('customer result: ', result);  
       expect(result.id).to.not.be.null;
       expect(result.externalId).to.eq(event.input.externalId);
+      expect(result.phoneNumber[1]).to.eq("977777777");
+      expect(result.email[0]).to.eq(event.input.email[0]);
       
       customer = result;
       done();
     }).catch(done);
   });
 
-  it('return success when update customer', function (done) {
+  it('returns success when update customer', function (done) {
     delete event.input.externalId;
     event.input.id = customer.id;
     event.input.name = "Pluga customer updated";
-    event.input.phoneNumber = "977777777";
+    event.input.phoneNumber = "97 7777 777";
     event.input.email = "email1@pluga.com";
 
     action.handle(plg, event).then((result) => {
       expect(result.id).to.eq(customer.id);
-      expect(result.description).to.eq("Pluga customer updated");
+      expect(result.description).to.eq(event.input.name);
       expect(result.externalId).to.eq("10");
-      expect(result.phoneNumber[0]).to.eq("977777777");
-      expect(result.email[0]).to.eq("email1@pluga.com");
+      expect(result.phoneNumber[0]).to.eq(event.input.phoneNumber[0]);
+      expect(result.email[0]).to.eq(event.input.email[0]);
       
       done();
     }).catch(done);
