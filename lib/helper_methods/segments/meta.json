@@ -1,21 +1,22 @@
 {
   "name": "Listar os códigos de segmentos",
-  "helper_method_key": "segments",
   "requests": [
     {
       "method_name": "/segments",
-      "response_field": [
-        "entityList"
-      ],
       "params": {
         "paramFilter": "",
         "page": "1",
         "pageSize": "100",
         "order": "asc"
       },
+      "response_field": [
+        "result.entityList"
+      ],
       "mapping": {
         "label": {
-          "fields": ["description"]
+          "fields": [
+            "description"
+          ]
         },
         "value": {
           "field": "id"

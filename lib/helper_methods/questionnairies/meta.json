@@ -1,21 +1,22 @@
 {
   "name": "Listar os códigos de questionários",
-  "helper_method_key": "questionnairies",
   "requests": [
     {
       "method_name": "/questionnaires",
-      "response_field": [
-        "entityList"
-      ],
       "params": {
         "paramFilter": "",
         "page": "1",
         "pageSize": "100",
         "order": "asc"
       },
+      "response_field": [
+        "result.entityList"
+      ],
       "mapping": {
         "label": {
-          "fields": ["description"]
+          "fields": [
+            "description"
+          ]
         },
         "value": {
           "field": "id"

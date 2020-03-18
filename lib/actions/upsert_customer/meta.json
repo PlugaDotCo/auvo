@@ -3,7 +3,6 @@
     "pt_BR": "Cadastrar ou atualizar cliente",
     "en": "Create or update customer"
   },
-  "action_key": "upsertCustomer",
   "description": {
     "pt_BR": "Cadastrar ou atualizar cliente",
     "en": "Create or update customer"
@@ -21,7 +20,6 @@
           "en": "Customer id. Only for updates"
         },
         "required": false,
-        "visible": true,
         "advanced": false,
         "field_type": "custom",
         "data_type": "integer"
@@ -37,7 +35,6 @@
           "en": "Customer id in the source application"
         },
         "required": false,
-        "visible": true,
         "advanced": false,
         "field_type": "custom",
         "data_type": "string"
@@ -53,7 +50,6 @@
           "en": "Customer's name"
         },
         "required": true,
-        "visible": true,
         "advanced": false,
         "field_type": "custom",
         "data_type": "string"
@@ -69,7 +65,6 @@
           "en": "phone number. Multiples must be separated by comma"
         },
         "required": false,
-        "visible": true,
         "advanced": false,
         "field_type": "custom",
         "data_type": "string"
@@ -85,7 +80,6 @@
           "en": "Customer email. Multiples must be separated by comma"
         },
         "required": false,
-        "visible": true,
         "advanced": false,
         "field_type": "custom",
         "data_type": "string"
@@ -101,7 +95,6 @@
           "en": "Manager name"
         },
         "required": false,
-        "visible": true,
         "advanced": false,
         "field_type": "custom",
         "data_type": "string"
@@ -117,7 +110,6 @@
           "en": "Manager job position"
         },
         "required": false,
-        "visible": true,
         "advanced": false,
         "field_type": "custom",
         "data_type": "string"
@@ -133,8 +125,7 @@
           "en": "Note"
         },
         "required": false,
-        "visible": true,
-        "advanced": false,
+        "advanced": true,
         "field_type": "custom",
         "data_type": "string"
       },
@@ -148,8 +139,7 @@
           "pt_BR": "Endereço",
           "en": "Address"
         },
-        "required": true,
-        "visible": true,
+        "required": false,
         "advanced": false,
         "field_type": "custom",
         "data_type": "string"
@@ -164,8 +154,7 @@
           "pt_BR": "Latitude do endereço",
           "en": "Adress latitude"
         },
-        "required": true,
-        "visible": true,
+        "required": false,
         "advanced": false,
         "field_type": "custom",
         "data_type": "integer"
@@ -180,8 +169,7 @@
           "pt_BR": "Longitude do endereço",
           "en": "Address longitude"
         },
-        "required": true,
-        "visible": true,
+        "required": false,
         "advanced": false,
         "field_type": "custom",
         "data_type": "integer"
@@ -197,7 +185,6 @@
           "en": "Maximum visit time"
         },
         "required": false,
-        "visible": true,
         "advanced": false,
         "field_type": "custom",
         "data_type": "integer"
@@ -213,7 +200,6 @@
           "en": "Unit maximum time"
         },
         "required": false,
-        "visible": true,
         "advanced": false,
         "field_type": "custom",
         "data_type": "integer"
@@ -229,7 +215,6 @@
           "en": "CPF or CNPJ"
         },
         "required": false,
-        "visible": true,
         "advanced": false,
         "field_type": "custom",
         "data_type": "string"
@@ -245,8 +230,7 @@
           "en": "Adress complement"
         },
         "required": false,
-        "visible": true,
-        "advanced": false,
+        "advanced": true,
         "field_type": "custom",
         "data_type": "string"
       },
@@ -261,66 +245,86 @@
           "en": "Customer active"
         },
         "required": false,
-        "visible": true,
         "advanced": false,
         "field_type": "custom",
         "data_type": "boolean"
       },
       {
         "key": "segmentId",
-        "name": { "pt_BR": "Código do segmento", "en": "Segment Id" },
-        "description": { "pt_BR": "Código do segmento", "en": "Segment Id" },
-        "label": { "pt_BR": "Código do segmento", "en": "Segment Id" },
-        "placeholder": { "pt_BR": "Selecione um código de segmento", "en": "Select an id for the segment" },
+        "name": { 
+          "pt_BR": "Código do segmento", 
+          "en": "Segment Id" 
+        },
+        "description": { 
+          "pt_BR": "Código do segmento", 
+          "en": "Segment Id" 
+        },
+        "label": { 
+          "pt_BR": "Código do segmento", 
+          "en": "Segment Id" 
+        },
+        "placeholder": { 
+          "pt_BR": "Selecione um código de segmento", 
+          "en": "Select an id for the segment" 
+        },
         "required": false,
-        "visible": true,
+        "advanced": true,
         "field_type": "dropdown",
         "data_type": "integer",
         "list": {
           "type": "remote",
           "helper_method": "segments"
-        }
+        },
+        "dropdown_multiple": false
       },
       {
         "key": "groupsId",
-        "name": { "pt_BR": "Códigos de grupos de cliente", "en": "Customers group id" },
-        "description": { "pt_BR": "Códigos de grupos de cliente", "en": "Customers group id" },
-        "label": { "pt_BR": "Códigos de grupos de cliente", "en": "Customers group id" },
-        "placeholder": { "pt_BR": "Selecione códigos de grupo de cliente", "en": "Select ids for the customers group" },
+        "name": { 
+          "pt_BR": "Códigos de grupos de cliente", 
+          "en": "Customers group id" 
+        },
+        "description": { 
+          "pt_BR": "Códigos de grupos de cliente", 
+          "en": "Customers group id" 
+        },
+        "label": { 
+          "pt_BR": "Códigos de grupos de cliente", 
+          "en": "Customers group id" 
+        },
+        "placeholder": { 
+          "pt_BR": "Selecione códigos de grupo de cliente", 
+          "en": "Select ids for the customers group" 
+        },
         "required": false,
-        "visible": true,
+        "advanced": true,
         "field_type": "dropdown",
         "data_type": "integer",
         "list": {
           "type": "remote",
-          "helper_method": "customerGroups"
+          "helper_method": "customer_groups"
         },
         "dropdown_multiple": true
       },
-      /*{
-        "key": "managerTeamsId",
-        "name": { "pt_BR": "Códigos de equipes responsáveis", "en": "Manager teams id" },
-        "description": { "pt_BR": "Códigos de equipes responsáveis", "en": "Manager teams id" },
-        "label": { "pt_BR": "Códigos de equipes responsáveis", "en": "Manager teams id" },
-        "placeholder": { "pt_BR": "Selecione códigos de equipes responsáveis", "en": "Select manager teams ids" },
-        "required": false,
-        "visible": true,
-        "field_type": "dropdown",
-        "data_type": "integer",
-        "list": {
-          "type": "remote",
-          "helper_method": ""
-        },
-        "dropdown_multiple": true
-      },*/
       {
         "key": "managersId",
-        "name": { "pt_BR": "Códigos de responsáveis", "en": "Managers id" },
-        "description": { "pt_BR": "Códigos de responsáveis", "en": "Managers id" },
-        "label": { "pt_BR": "Códigos de responsáveis", "en": "Manager id" },
-        "placeholder": { "pt_BR": "Selecione códigos de usuários responsáveis", "en": "Select manager ids" },
+        "name": { 
+          "pt_BR": "Códigos de responsáveis", 
+          "en": "Managers id" 
+        },
+        "description": { 
+          "pt_BR": "Códigos de responsáveis", 
+          "en": "Managers id" 
+        },
+        "label": { 
+          "pt_BR": "Códigos de responsáveis", 
+          "en": "Manager id" 
+        },
+        "placeholder": { 
+          "pt_BR": "Selecione códigos de usuários responsáveis", 
+          "en": "Select manager ids" 
+        },
         "required": false,
-        "visible": true,
+        "advanced": true,
         "field_type": "dropdown",
         "data_type": "integer",
         "list": {

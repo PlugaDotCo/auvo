@@ -4,9 +4,6 @@
   "requests": [
     {
       "method_name": "/users",
-      "response_field": [
-        "entityList"
-      ],
       "params": {
         "paramFilter": "",
         "page": "1",
@@ -14,9 +11,14 @@
         "order": "asc",
         "selectfields": "userID, name"
       },
+      "response_field": [
+        "result.entityList"
+      ],
       "mapping": {
         "label": {
-          "fields": ["name"]
+          "fields": [
+            "name"
+          ]
         },
         "value": {
           "field": "userID"

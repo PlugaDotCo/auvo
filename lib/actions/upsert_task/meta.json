@@ -294,7 +294,7 @@
         "advanced": false,
         "field_type": "custom",
         "data_type": "boolean"
-      },
+      }
     ]
   }
 }
