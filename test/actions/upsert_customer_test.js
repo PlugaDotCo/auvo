@@ -26,8 +26,8 @@ const event = {
     maximumVisitTime: 1,
     unitMaximumTime: 3,
     cpfCnpj: "71728976090",
-    // groupsId: '31171, 31172', // valores invalidos //verificar como o meta ta enviando isso
-    managerTeamsId: [],
+    //groupsId: '', // valores invalidos //verificar como o meta ta enviando isso
+    //managerTeamsId: [],
     // managersId: '12080, 12111',
     // segmentId: 1096, //quando não existe volta com err.response.data = "" - tratar isso
     active: true,
@@ -49,6 +49,7 @@ describe('Action: Upsert customer', function () {
       expect(result.email[0]).to.eq(event.input.email[0]);
       
       customer = result;
+      // console.log(customer);
       done();
     }).catch(done);
   });
