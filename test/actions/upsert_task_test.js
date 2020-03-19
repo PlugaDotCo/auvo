@@ -13,17 +13,17 @@ const event = {
     apiToken: process.env.API_TOKEN
   },
   input: {
-   orientation: "orientation",
-   taskDate: "2019-03-26T14:00:00",
-   sendSatisfactionSurvey: false,
-   priority: "1",
-   externalId: "7",
-   longitude: "85",
-   latitude: "85",
-   address: "rua rua 123",
-   checkinType: "1",
-   attachments: "fileNamePluga.txt/dGVzdGUgcGx1Z2E=, fileNamePluga2.txt/dGVzdGUgcGx1Z2EgMg==",
-   keyWords: "1792, 9254"
+    externalId: "7",
+    // idUserFrom: 
+    taskDate: "2019-03-26T14:00:00",
+    latitude: "85",
+    longitude: "85",
+    address: "rua rua 123",
+    orientation: "orientation", 
+    priority: "1",
+    checkinType: "1",
+    keyWords: "1792, 9254",
+    sendSatisfactionSurvey: false
   }
 };
 
@@ -35,7 +35,6 @@ describe('Action: Upsert task', function () {
   let task;
   it('returns success when register a new task', function (done) {
     action.handle(plg, event).then((result) => {  
-      // console.log('result =', result);
       expect(result.taskID).to.not.be.null;
       expect(result.orientation).to.eq(event.input.orientation);
       

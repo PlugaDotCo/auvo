@@ -21,7 +21,114 @@
           "en": "Task id. Only for updates"
         },
         "required": false,
-        "visible": true,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "integer"
+      },
+      {
+        "key": "externalId",
+        "name": {
+          "pt_BR": "Código externo",
+          "en": "External id"
+        },
+        "description": {
+          "pt_BR": "Código da tarefa na aplicação de origem",
+          "en": "Task id in the source application"
+        },
+        "required": false,
+        "advanced": false,
+        "field_type": "custom",
+        "data_type": "string"
+      },
+      {
+        "key": "taskType",
+        "name": { 
+          "pt_BR": "Tipo da tarefa", 
+          "en": "Task type" 
+        },
+        "description": {
+          "pt_BR": "Tipo da tarefa",
+          "en": "Task type"
+        },
+        "label": {
+          "pt_BR": "Tipo da tarefa",
+          "en": "Task type"
+        },
+        "placeholder": { 
+          "pt_BR": "Selecione um tipo de tarefa", 
+          "en": "Select a task type" 
+        },
+        "required": false,
+        "field_type": "dropdown",
+        "list": {
+          "type": "remote",
+          "helper_method": "task_types"
+        },
+        "data_type": "integer"
+      },
+      {
+        "key": "idUserFrom",
+        "name": { 
+          "pt_BR": "Código do usuário 'de'", 
+          "en": "userId 'from' User" 
+        },
+        "description": {
+          "pt_BR": "Código do usuário que está abrindo a tarefa",
+          "en": "userId of the User that is opening the task"
+        },
+        "label": { 
+          "pt_BR": "Código do usuário 'de'", 
+          "en": "User 'from' id" 
+        },
+        "placeholder": { 
+          "pt_BR": "Selecione um código do usuário 'de'", 
+          "en": "Select an id for the user 'from'" 
+        },
+        "required": true,
+        "field_type": "dropdown",
+        "list": {
+          "type": "remote",
+          "helper_method": "users"
+        },
+        "data_type": "integer"
+      },
+      {
+        "key": "idUserTo",
+        "name": { 
+          "pt_BR": "Código do usuário 'para'", 
+          "en": "User 'to' id" 
+        },
+        "description": {
+          "pt_BR": "Código do usuário para quem foi aberto a tarefa",
+          "en": "User id for whom the task was opened"
+        },
+        "label": { 
+          "pt_BR": "Código do usuário 'para'", 
+          "en": "User 'to' id" 
+        },
+        "placeholder": { 
+          "pt_BR": "Selecione um código de usuário para", 
+          "en": "Select a id for the user 'to'" 
+        },
+        "required": false,
+        "field_type": "dropdown",
+        "list": {
+          "type": "remote",
+          "helper_method": "users"
+        },
+        "data_type": "integer"
+      },
+      {
+        "key": "teamId",
+        "name": {
+          "pt_BR": "Código da equipe",
+          "en": "Team id"
+        },
+        "description": {
+          "pt_BR": "Código da equipe para a tarefa",
+          "en": "Team id for the task"
+        },
+        "required": false,
         "advanced": false,
         "field_type": "custom",
         "data_type": "integer"
@@ -33,15 +140,13 @@
           "en": "Task date"
         },
         "description": {
-          "pt_BR": "Data da tarefa",
-          "en": "Task date"
+          "pt_BR": "Data da tarefa.",
+          "en": "Task date."
         },
-        "required": true,
-        "visible": true,
+        "required": false,
         "advanced": false,
         "field_type": "custom",
-        "data_type": "datetime",
-        "date_format": "%Y-%m-%d 00:00:00"
+        "data_type": "datetime"
       },
       {
         "key": "latitude",
@@ -54,10 +159,9 @@
           "en": "Adress latitude"
         },
         "required": true,
-        "visible": true,
         "advanced": false,
         "field_type": "custom",
-        "data_type": "integer"
+        "data_type": "decimal"
       },
       {
         "key": "longitude",
@@ -70,10 +174,9 @@
           "en": "Address longitude"
         },
         "required": true,
-        "visible": true,
         "advanced": false,
         "field_type": "custom",
-        "data_type": "integer"
+        "data_type": "decimal"
       },
       {
         "key": "address",
@@ -86,7 +189,6 @@
           "en": "Address"
         },
         "required": true,
-        "visible": true,
         "advanced": false,
         "field_type": "custom",
         "data_type": "string"
@@ -102,22 +204,31 @@
           "en": "Task orientation"
         },
         "required": true,
-        "visible": true,
         "advanced": false,
         "field_type": "custom",
         "data_type": "string"
       },
       {
         "key": "priority",
-        "name": { "pt_BR": "Prioridade da tarefa", "en": "Task priority" },
-        "description": { "pt_BR": "Prioridade da tarefa", "en": "Task priority" },
-        "label": { "pt_BR": "Tipo de Empresa", "en": "Company: Type" },
-        "placeholder": { "pt_BR": "Selecione um tipo de prioridade", "en": "Select a priority type" },
+        "name": { 
+          "pt_BR": "Prioridade da tarefa", 
+          "en": "Task priority" 
+        },
+        "description": { 
+          "pt_BR": "Prioridade da tarefa", 
+          "en": "Task priority" 
+        },
+        "label": { 
+          "pt_BR": "Tipo de Empresa", 
+          "en": "Company: Type" 
+        },
+        "placeholder": { 
+          "pt_BR": "Selecione um tipo de prioridade", 
+          "en": "Select a priority type" 
+        },
         "required": true,
-        "visible": true,
-        "advanced": true,
+        "advanced": false,
         "field_type": "dropdown",
-        "data_type": "string",
         "list": {
           "type": "local",
           "data": [
@@ -125,135 +236,82 @@
             {"label": "Media", "value": "2" },
             {"label": "Alta", "value": "3" }
           ]
-        }
-      },
-      {
-        "key": "externalId",
-        "name": {
-          "pt_BR": "Código externo",
-          "en": "External id"
         },
-        "description": {
-          "pt_BR": "Código da tarefa na aplicação de origem",
-          "en": "Task id in the source application"
-        },
-        "required": false,
-        "visible": true,
-        "advanced": false,
-        "field_type": "custom",
         "data_type": "string"
-      },
-      {
-        "key": "taskType",
-        "name": { "pt_BR": "Tipo da tarefa", "en": "Task type" },
-        "description": {"pt_BR": "Tipo da tarefa","en": "Task type"},
-        "label": {"pt_BR": "Tipo da tarefa","en": "Task type"},
-        "placeholder": { "pt_BR": "Selecione um tipo de tarefa", "en": "Select a task type" },
-        "required": false,
-        "visible": true,
-        "field_type": "dropdown",
-        "data_type": "integer",
-        "list": {
-          "type": "remote",
-          "helper_method": "taskTypes"
-        }
-      },
-      {
-        "key": "idUserTo",
-        "name": { "pt_BR": "Código do usuário 'para'", "en": "User 'to' id" },
-        "description": {"pt_BR": "Código do usuário para quem foi aberto a tarefa","en": "User id for whom the task was opened"},
-        "label": { "pt_BR": "Código do usuário 'para'", "en": "User 'to' id" },
-        "placeholder": { "pt_BR": "Selecione um código de usuário para", "en": "Select a id for the user 'to'" },
-        "required": true,
-        "visible": true,
-        "field_type": "dropdown",
-        "data_type": "integer",
-        "list": {
-          "type": "remote",
-          "helper_method": "users"
-        }
-      },
-      {
-        "key": "teamId",
-        "name": {
-          "pt_BR": "Código da equipe",
-          "en": "Team id"
-        },
-        "description": {
-          "pt_BR": "Código da equipe para a tarefa",
-          "en": "Team id for the task"
-        },
-        "required": false,
-        "visible": true,
-        "advanced": false,
-        "field_type": "custom",
-        "data_type": "integer"
       },
       {
         "key": "questionnaireId",
-        "name": { "pt_BR": "Código do questionário", "en": "Questionnaire Id" },
-        "description": { "pt_BR": "Código do questionário", "en": "Questionnaire Id" },
-        "label": { "pt_BR": "Código do questionário", "en": "Questionnaire Id" },
-        "placeholder": { "pt_BR": "Selecione um código de questionário", "en": "Select an id for the questionnaire" },
+        "name": { 
+          "pt_BR": "Código do questionário", 
+          "en": "Questionnaire Id" 
+        },
+        "description": { 
+          "pt_BR": "Código do questionário", 
+          "en": "Questionnaire Id" 
+        },
+        "label": { 
+          "pt_BR": "Código do questionário", 
+          "en": "Questionnaire Id" 
+        },
+        "placeholder": { 
+          "pt_BR": "Selecione um código de questionário", 
+          "en": "Select an id for the questionnaire" 
+        },
         "required": false,
-        "visible": true,
         "field_type": "dropdown",
-        "data_type": "integer",
         "list": {
           "type": "remote",
           "helper_method": "questionnairies"
-        }
+        },
+        "data_type": "integer"
       },
       {
         "key": "customerId",
-        "name": { "pt_BR": "Código do cliente", "en": "Customer id" },
-        "description": { "pt_BR": "Código do cliente", "en": "Customer id" },
-        "label": { "pt_BR": "Código do cliente", "en": "Customer id" },
-        "placeholder": { "pt_BR": "Selecione um código de cliente", "en": "Select an id for the customer" },
+        "name": { 
+          "pt_BR": "Código do cliente", 
+          "en": "Customer id" 
+        },
+        "description": { 
+          "pt_BR": "Código do cliente", 
+          "en": "Customer id" 
+        },
+        "label": { 
+          "pt_BR": "Código do cliente", 
+          "en": "Customer id" 
+        },
+        "placeholder": { 
+          "pt_BR": "Selecione um código de cliente", 
+          "en": "Select an id for the customer" 
+        },
         "required": false,
-        "visible": true,
         "field_type": "dropdown",
-        "data_type": "integer",
         "list": {
           "type": "remote",
           "helper_method": "customers"
-        }
-      },
-      {
-        "key": "attachment.name",
-        "name": { "pt_BR": "Nome do arquivo de anexo", "en": "Attachment file name" },
-        "description": {
-          "pt_BR": "Nome do arquivo de anexo deve conter a extensão do arquivo. Exemplo: foto.jpg",
-          "en": "The attachment file name must contain the file extension. Example: foto.jpg"
         },
-        "required": false,
-        "visible": true,
-        "field_type": "custom",
-        "data_type": "string"
-      },
-      {
-        "key": "attachment.file",
-        "name": { "pt_BR": "Arquivo de anexo", "en": "Attachment file" },
-        "description": {
-          "pt_BR": "Arquivo de anexo base64",
-          "en": "Base64 attachment file"
-        },
-        "required": false,
-        "visible": true,
-        "field_type": "custom",
-        "data_type": "string"
+        "data_type": "integer"
       },
       {
         "key": "checkinType",
-        "name": { "pt_BR": "Tipo de checkin", "en": "Checkin type" },
-        "description": { "pt_BR": "Tipo de checkin da tarefa", "en": "Task Checkin type" },
-        "label": { "pt_BR": "Tipo de checkin da tarefa", "en": "Task Checkin type" },
-        "placeholder": { "pt_BR": "Selecione um tipo de checkin da tarefa", "en": "Select a checkin type for the task" },
+        "name": { 
+          "pt_BR": "Tipo de checkin", 
+          "en": "Checkin type" 
+        },
+        "description": { 
+          "pt_BR": "Tipo de checkin da tarefa", 
+          "en": "Task Checkin type" 
+        },
+        "label": { 
+          "pt_BR": "Tipo de checkin da tarefa", 
+          "en": "Task Checkin type" 
+        },
+        "placeholder": { 
+          "pt_BR": "Selecione um tipo de checkin da tarefa", 
+          "en": "Select a checkin type for the task" 
+        },
         "required": false,
-        "visible": true,
         "advanced": true,
         "field_type": "dropdown",
-        "data_type": "string",
         "list": {
           "type": "local",
           "data": [
@@ -261,22 +319,34 @@
             {"label": "Automático", "value": "2" },
             {"label": "Usuário", "value": "3" }
           ]
-        }
+        },
+        "data_type": "string"
       },
       {
         "key": "keyWords",
-        "name": { "pt_BR": "Código da palavra chave", "en": "Keyword id" },
-        "description": { "pt_BR": "Código da palavra chave", "en": "Keyword id" },
-        "label": { "pt_BR": "Código da palavra chave", "en": "Keyword id" },
-        "placeholder": { "pt_BR": "Selecione um código da palavra chave", "en": "Select an id for the keyword" },
+        "name": { 
+          "pt_BR": "Código da palavra chave", 
+          "en": "Keyword id" 
+        },
+        "description": { 
+          "pt_BR": "Código da palavra chave", 
+          "en": "Keyword id" 
+        },
+        "label": { 
+          "pt_BR": "Código da palavra chave", 
+          "en": "Keyword id" 
+        },
+        "placeholder": { 
+          "pt_BR": "Selecione um código da palavra chave", 
+          "en": "Select an id for the keyword" 
+        },
         "required": false,
-        "visible": true,
         "field_type": "dropdown",
-        "data_type": "string",
         "list": {
           "type": "remote",
           "helper_method": "keywords"
         },
+        "data_type": "string",
         "dropdown_multiple": true
       },
       {
@@ -290,7 +360,6 @@
           "en": "Send satisfaction survey"
         },
         "required": false,
-        "visible": true,
         "advanced": false,
         "field_type": "custom",
         "data_type": "boolean"
