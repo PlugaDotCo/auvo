@@ -15,25 +15,27 @@
       "default": true
     }
   },
+  // verificar se ta pegando o bearer token de auth
   "authentication": {
     "ping_request": {
       "method_name": "/login",
       "status":{
-      "field": "authenticated",
-      "value": "true"
-    },
-    "type": "pass_through_query_string", 
-    "fields": [
-      {
-        "name": "apiKey",
-        "label": "Api key",
-        "type": "text"
+        "field": "authenticated",
+        "value": "true"
       },
-      {
-        "name": "apiToken",
-        "label": "Api token",
-        "type": "text"
-      }
-    ]
+      "type": "pass_through_query_string", 
+      "fields": [
+        {
+          "name": "apiKey",
+          "label": "Api key",
+          "type": "text"
+        },
+        {
+          "name": "apiToken",
+          "label": "Api token",
+          "type": "text"
+        }
+      ]
+    }
   }
 }

@@ -146,7 +146,8 @@
         "required": false,
         "advanced": false,
         "field_type": "custom",
-        "data_type": "datetime"
+        "data_type": "datetime",
+        "date_format": "%Y-%m-%d 00:00:00"
       },
       {
         "key": "latitude",
